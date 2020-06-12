@@ -9,11 +9,11 @@ class App extends Component {
       {name: "Umida", age: 25},
       {name: "Baha", age: 25}
     ],
-    otherState: "some other value"
+    otherState: "some other value",
+    showPersons: false
   };
 
  switchNameHandler = (newName) => {
-    //console.log("was clicked");
     this.setState({
       persons: [
         {name: newName, age: 20},
@@ -31,7 +31,12 @@ class App extends Component {
         {name: "Baha", age: 30}
       ]
     })
-  }
+  };
+
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
+  };
   
   render(){
     const style = {
@@ -43,21 +48,28 @@ class App extends Component {
       cursor: "pointer"
     };
 
-
     return (
       <div className="App">
         <h1>Hey, I'm a React App</h1>
         <p>This is definitely working!</p>
         <button 
-        style={style} onClick={() => this.switchNameHandler("Steve")}>Switch Name</button>
-        <Person name={this.state.persons[0].name}
-         age={this.state.persons[0].age} />
-        <Person name={this.state.persons[1].name}
-         age={this.state.persons[1].age}
-         click={this.switchNameHandler.bind(this, "Mimic")}
-         changed={this.nameChangeHandler}>My hobby is racing.</Person>
-        <Person name={this.state.persons[2].name}
-         age={this.state.persons[2].age}/>
+        style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {
+          this.state.showPersons ? 
+            <div>
+              <Person 
+                name={this.state.persons[0].name}
+                age={this.state.persons[0].age} />
+              <Person 
+                name={this.state.persons[1].name}
+                age={this.state.persons[1].age}
+                click={this.switchNameHandler.bind(this, "Mimic")}
+                changed={this.nameChangeHandler}>My hobby is racing.</Person>
+              <Person 
+                name={this.state.persons[2].name}
+                age={this.state.persons[2].age}/>
+            </div> : null
+        }
       </div>
     );
   }  
