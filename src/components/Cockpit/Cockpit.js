@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Cockpit.css"
 
 const Cockpit = (props) => {
+  useEffect(() => {
+    console.log("[cockpit.js] useEffect"); 
+    //http request...
+  }); 
 
     const assignedClasses = [];
     let btnClass = "";
@@ -17,7 +21,7 @@ const Cockpit = (props) => {
     };
     return (
         <div className={styles.Cockpit}>
-            <h1>Hey, I'm a React App</h1>
+            <h1>{props.title}</h1>
         <p className={assignedClasses.join(" ")}>This is definitely working!</p>
         <button className={btnClass} onClick={props.toggled}>Toggle  Persons
         </button>
