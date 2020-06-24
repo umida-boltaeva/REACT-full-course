@@ -5,10 +5,22 @@ const Cockpit = (props) => {
   useEffect(() => {
     console.log("[cockpit.js] useEffect"); 
     //http request...
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       alert("Saved data to the cloud!")
     }, 1000);
-  }, [props.persons]); 
+    return  () => {
+      clearTimeout(timer);
+      console.log("[cockpit.js] cleanup work in useEffect");
+      
+    }
+  }, []); 
+
+  useEffect(() => {
+    console.log("[cockpit.js] 2nd useEffect");
+    return () => {
+      console.log("[cockpit.js] cleanup work in 2nd useEffect");
+    };
+  });
 
     const assignedClasses = [];
     let btnClass = "";
