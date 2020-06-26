@@ -1,15 +1,17 @@
-import React, {Component} from "react";
+import React, {PureComponent} from "react";
 import Person from "./Person/Person"
 
-class Persons extends Component {
-    shouldComponentUpdate(nextProps, nextState) {
-        if (nextProps.persons !== this.props.persons) {
-            return true;
-        }else {
-            return false;
-        }
-        // return true;
-    }    
+class Persons extends PureComponent {
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     if (nextProps.persons !== this.props.persons ||
+    //         nextProps.clicked !== this.props.clicked ||
+    //         nextProps.changed !== this.props.changed) {
+    //         return true;
+    //     }else {
+    //         return false;
+    //     }
+    //     // return true;
+    // }    
  
     render () {
         return (
