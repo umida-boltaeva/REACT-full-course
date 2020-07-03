@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './App.css'; 
 import Persons from "../components/Persons/Persons";
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../HOC/WithClass';
+import withClass from '../HOC/withClass';
 
 class App extends Component {
   state = {
@@ -58,7 +58,7 @@ class App extends Component {
     };
 
     return (
-      <WithClass classes={styles.App}>
+      <>
         <button onClick={() => {this.setState({showCockpit: false})}}>Remove Cockpit</button>
         { this.state.showCockpit ? 
         <Cockpit
@@ -68,11 +68,11 @@ class App extends Component {
           toggled={this.togglePersonsHandler}
         /> : null}
          {persons}   
-      </WithClass>
+      </>
     );
   } 
 }; 
 
 
-export default App;
+export default withClass(App, styles.App);
 
