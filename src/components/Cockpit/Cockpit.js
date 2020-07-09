@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./Cockpit.css"
 
 const Cockpit = (props) => {
-  const toggleBtnRef = useRef();
+  const toggleBtnRef = useRef(null);
 
 
   useEffect(() => {
